@@ -247,7 +247,7 @@ if(isset($_POST['search'])){
 							  		echo '<td>'. $result ['REGISTRATIONDATE'].'</td>';
 							  		echo '<td>'. $result ['REMARKS'].'</td>';  
 					  				echo '<td align="center" >    
-					  		             <a title="View" href="index.php?view=view&id='.$result['REGISTRATIONID'].'"  class="btn btn-info btn-xs  ">
+					  		             <a title="View" href="index.php?view=view&id='.$result['REGISTRATIONID'].'"  class="btn btn-info btn-xs" target="_blank">
 					  		             <span class="fa fa-info fw-fa"></span> View</a> 	
                              
 

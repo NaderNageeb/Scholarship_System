@@ -87,7 +87,7 @@ if($query = mysqli_query($conn,$sqli)){
 							  		<td><?php if($result->admin_app_1 == 0)echo "Pending"; if($result->admin_app_1 == 1)echo "Approved"; if($result->admin_app_1 == 2)echo "<div class='btn btn-danger btn-xs'>Rejected</div>";  if($result->admin_app_1 == 1 )echo ""; ?>  </td>
 									<?php  
 					  				echo '<td align="center" >    
-					  		             <a title="View" href="index.php?view=view&id='.$result->REGISTRATIONID.'"  class="btn btn-info btn-xs  ">
+					  		             <a title="View" href="index.php?view=view&id='.$result->REGISTRATIONID.'"  class="btn btn-info btn-xs" target="_blank">
 					  		             <span class="fa fa-info fw-fa"></span> View</a> 
 					  		             <a title="Remove" href="index.php?view=delete&id='.$result->REGISTRATIONID.'"  class="btn btn-danger btn-xs  ">
 					  		             <span class="fa fa-trash-o fw-fa"></span> Remove</a> 

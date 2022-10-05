@@ -23,7 +23,9 @@ global $mydb;
 	// $mydb->setQuery($sql);
 	// $attachmentfile = $mydb->loadSingleResult();
 
-
+	$sql = "SELECT * FROM `tbljobregistration` WHERE `REGISTRATIONID`= '$red_id'";
+	$mydb->setQuery($sql);
+	$attachmentfile = $mydb->loadSingleResult();
 ?> 
 <style type="text/css">
 .content-header {
@@ -115,6 +117,11 @@ global $mydb;
 		<p style="margin-left: 15px;"><?php echo $appl->DEGREE;?></p>
 	</div>
 
+
+	<p><i class="fa fa-paperclip"></i>  Attachment Files</p>
+	<div class="col-sm-12 slider">
+		 <h3>Download Cirtificates <a href="../../photos/<?php echo $attachmentfile->FILE_NAME_LOCATION;    ?>">Here</a></h3>
+	</div> 
 <!-- 
 </div> 
 <div class="col-sm-12 content-footer">

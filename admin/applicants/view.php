@@ -109,48 +109,7 @@ if(isset($_POST['reject'])){
 	
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <form action="" method="POST">

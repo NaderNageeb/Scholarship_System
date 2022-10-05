@@ -19,11 +19,13 @@ global $mydb;
 	$comp = $company->single_company($jobreg->COMPANYID);
 	 // `COMPANYNAME`, `COMPANYADDRESS`, `COMPANYCONTACTNO`
 
-	$sql = "SELECT * FROM `tblattachmentfile` WHERE `FILEID`=" .$jobreg->FILEID;
+	// $sql = "SELECT * FROM `tblattachmentfile` WHERE `FILEID`=" .$jobreg->FILEID;
+	// $mydb->setQuery($sql);
+	// $attachmentfile = $mydb->loadSingleResult();
+
+	$sql = "SELECT * FROM `tbljobregistration` WHERE `REGISTRATIONID`= '$red_id'";
 	$mydb->setQuery($sql);
 	$attachmentfile = $mydb->loadSingleResult();
-
-
 ?> 
 <style type="text/css">
 .content-header {
@@ -67,7 +69,7 @@ global $mydb;
 <form action="controller.php?action=approve" method="POST">
 <div class="col-sm-12 content-header" >View Details</div>
 <div class="col-sm-6 content-body" > 
-	<p>Job Details</p> 
+	<p>Scholership Details</p> 
 	<h3><?php echo $job->OCCUPATIONTITLE; ?></h3>
 	<input type="hidden" name="JOBREGID" value="<?php echo $jobreg->REGISTRATIONID;?>">
 	<input type="hidden" name="APPLICANTID" value="<?php echo $appl->APPLICANTID;?>">
@@ -75,46 +77,51 @@ global $mydb;
 	<div class="col-sm-6">
 		<ul>
             <li><i class="fp-ht-bed"></i>Required No. of Employee's : <?php echo $job->REQ_NO_EMPLOYEES; ?></li>
-            <li><i class="fp-ht-food"></i>Salary : <?php echo number_format($job->SALARIES,2);  ?></li>
+            <li><i class="fp-ht-food"></i>Salary : <?php echo $job->SALARIES;  ?></li>
             <li><i class="fa fa-sun-"></i>Duration of Employment : <?php echo $job->DURATION_EMPLOYEMENT; ?></li>
         </ul>
 	</div> 
 	<div class="col-sm-6">
 		<ul> 
             <li><i class="fp-ht-tv"></i>Prefered Sex : <?php echo $job->PREFEREDSEX; ?></li>
-            <li><i class="fp-ht-computer"></i>Sector of Vacancy : <?php echo $job->SECTOR_VACANCY; ?></li>
+            <!-- <li><i class="fp-ht-computer"></i>Sector of Vacancy : <?php //echo $job->SECTOR_VACANCY; ?></li> -->
         </ul>
 	</div>
 	<div class="col-sm-12">
-		<p>Job Description : </p>   
+		<p>Scholership Description : </p>   
 		<p style="margin-left: 15px;"><?php echo $job->JOBDESCRIPTION;?></p>
 	</div>
-	<div class="col-sm-12"> 
+	<!-- <div class="col-sm-12"> 
 		<p>Qualification/Work Experience : </p>
-		<p style="margin-left: 15px;"><?php echo $job->QUALIFICATION_WORKEXPERIENCE; ?></p>
-	</div>
+		<p style="margin-left: 15px;"><?php //echo $job->QUALIFICATION_WORKEXPERIENCE; ?></p>
+	</div> -->
 	<div class="col-sm-12"> 
-		<p>Employeer : </p>
+		<p>Faculty : </p>
 		<p style="margin-left: 15px;"><?php echo $comp->COMPANYNAME ; ?></p> 
-		<p style="margin-left: 15px;">@ <?php echo $comp->COMPANYADDRESS ; ?></p>
+		<!-- <p style="margin-left: 15px;">@ <?php //echo $comp->COMPANYADDRESS ; ?></p> -->
 	</div>
 </div>
 <div class="col-sm-6 content-body" >
-	<p>Applicant Infomation</p> 
-	<h3> <?php echo $appl->LNAME. ', ' .$appl->FNAME . ' ' . $appl->MNAME;?></h3>
+	<p>Student Infomation</p> 
+	<h3> <?php echo $appl->FNAME . ' ' . $appl->MNAME . ' ' .$appl->LNAME  ;?></h3>
 	<ul> 
 		<li>Address : <?php echo $appl->ADDRESS; ?></li>
 		<li>Contact No. : <?php echo $appl->CONTACTNO;?></li>
 		<li>Email Address. : <?php echo $appl->EMAILADDRESS;?></li>
 		<li>Sex: <?php echo $appl->SEX;?></li>
-		<li>Age : <?php echo $appl->AGE;?></li> 
-		<li>Years of Experience : <?php echo $appl->EXPERINCE;?></li> 
+		<!-- <li>Age : <?php //echo $appl->AGE;?></li> 
+		<li>Years of Experience : <?php //echo $appl->EXPERINCE;?></li>  -->
 	</ul>
 	<div class="col-sm-12"> 
 		<p>Educational Attainment : </p>
 		<p style="margin-left: 15px;"><?php echo $appl->DEGREE;?></p>
 	</div>
 
+
+	<p><i class="fa fa-paperclip"></i>  Attachment Files</p>
+	<div class="col-sm-12 slider">
+		 <h3>Download Cirtificates <a href="../../photos/<?php echo $attachmentfile->FILE_NAME_LOCATION;    ?>">Here</a></h3>
+	</div> 
 <!-- 
 </div> 
 <div class="col-sm-12 content-footer">
